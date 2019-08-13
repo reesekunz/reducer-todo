@@ -1,51 +1,33 @@
-// // need 2 things - initial state & reducer function
+// need 2 things - initial state & reducer function
 
-// export const initialState = {
-
-// item: 'Learn about reducers',
-// completed: false,
-// id: 3892987589,
-
-// }
-
-// const addItem = itemTask => {
-//     const newItem = {
-//       task: itemTask,
-//       id: Date.now(),
-//       completed: false
-//     };
-//     this.setState({
-//       // Adding new item object created above to end of toDo array (used in ToDoForm.js)
-//       toDo: [...this.state.toDo, newItem]
-//     });
-//   };
-
-
-
-
-// export const todoReducer = (state, action) => {
-//     console.log(state, action);
-//     switch(action.type ) {
-//     case "TOGGLE_COMPLETED":
-//     return {
-//     ...state, completed: !state.completed
+export const initialState = {
     
-//     }
-    
-//     case "ADD_TODO":
-//     return {
-//     ... state, title: action.payload,
-//     editing: !state.editing
-    
-//     };
+        item: 'Learn about reducers',
+        completed: false,
+        id: 3892987589
+       
+}
 
-//     case "CLEAR_COMPLETED":
-//     return {
-//     ... state, completed: filter(item => !item.completed)
+export const toDoReducer = (state, action) => {
+console.log(state, action);
+switch(action.type) {
     
-//     };
-    
-//     default: 
-//     return state;
-//     }
-//     }
+    case "ADD_TODO":
+    return {
+
+    }
+
+    case "TOGGLE_COMPLETED":
+        return {
+
+        }
+
+        case "CLEAR_COMPLETED":
+            return {
+
+
+            }
+       default:
+           return state;     
+}
+}
