@@ -13,20 +13,22 @@ console.log(state, action);
 switch(action.type) {
     
     case "ADD_TASK":
-    return {
-
+    return { ...state, item: action.payload,
+    
     }
 
     case "TOGGLE_COMPLETED":
         return {
+            ...state, completed: !state.completed
 
         }
 
         case "CLEAR_COMPLETED":
             return {
 
-
+                // ... state, completed: filter(item => !state.completed)
             }
+
        default:
            return state;     
 }

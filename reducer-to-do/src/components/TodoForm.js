@@ -15,20 +15,21 @@ console.log(state);
 const handleChanges = event => {
   setNewItem( event.target.value );
 };
-// [event.target.name]: event.target.value
+
+const submitItem = event => {
+  // need prevent default on all form submissions and button clicks
+event.preventDefault ();
+// get text from input and use it to update state 
+setNewItem(state.item);
+// clear form on submission 
+setNewItem({ item: ""}) 
+}
 
 
   return (
-    <div>
-      {!state.completed ? (
-        <h1>
-          {state.item}{' '}
-          <i
-            onClick={() => dispatch({ type: "TOGGLE_COMPLETED" })}
-          />
-        </h1>
-      ) : (
+
         <div>
+        {/* <form onSubmit={submitItem}> */}
           <input
             className="item-input"
             type="text"
@@ -38,13 +39,15 @@ const handleChanges = event => {
           />
           
           <button onClick={() => dispatch({ type: "ADD_TASK", payload: newItem })}>ADD TASK</button>
+          {/* </form> */}
         </div>
-      )}
-    </div>
-  );
-  };
+      )
+   
+  
+}
   
   export default TodoForm;
+
 
 
 
