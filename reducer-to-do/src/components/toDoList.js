@@ -1,19 +1,21 @@
-// using reducer hook, set up state in your component
-// render list of todos from your reducer in your app
+// - `<TodoList />` receives your Todos array and iterates over the list generating a new `<Todo />` for each element in the array.
 
-import React, { useState, useReducer } from 'react';
-import { initialState, todoReducer } from "../reducers/reducer";
+import React from "react";
+import Item from "./Item";
 
-// actions - "TOGGLE_ITEM", "ADD_ITEM", "CLEAR_COMPLETED"
+const TodoList = props => {
+  return (
+    <div className="todo-list">
+      {props.toDo.map(item => (
+        <Item key={item.id} item={item} toggleItem={props.toggleItem} />
+      ))}
+      <button className="clear-btn" onClick={props.clearCompleted}>
+        Clear Completed
+      </button>
+    </div>
+  );
+};
 
-const Item = () => {
-    const [newItem, setNewItem] = useState();
-
-// useReducer - takes in a reducer and an initial stateState object
-// returns - a state object and the dispatch function 
-
-const [state, dispatch] = useReducer(todoReducer, initialState)
-console.log(state);
-
+export default TodoList;
 
 
