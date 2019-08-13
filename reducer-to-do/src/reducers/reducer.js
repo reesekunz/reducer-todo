@@ -12,7 +12,7 @@ export const toDoReducer = (state, action) => {
 console.log(state, action);
 switch(action.type) {
     
-    case "ADD_TODO":
+    case "ADD_TASK":
     return {
 
     }

@@ -9,9 +9,12 @@ const Item = props => {
       className={`item${props.item.completed ? ' completed' : ''}`}
       onClick={() => props.toggleItem(props.item.id)}
     >
+      {/* // dispatch({ type: "TOGGLE_COMPLETED"}) */}
+
       <p>{props.item.task}</p>
     </div>
   );
 };
 
 export default Item;
+
