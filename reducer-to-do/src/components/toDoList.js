@@ -1,4 +1,4 @@
-// - `<TodoList />` receives your Todos array and iterates over the list generating a new `<Todo />` for each element in the array.
+// Clear Completed 
 
 import React, { useReducer } from "react";
 import { initialState, toDoReducer } from "../reducers/reducer";
@@ -8,7 +8,7 @@ import Item from "./Item";
 
 const TodoList = props => {
   const [state, dispatch] = useReducer(toDoReducer, initialState)
-
+  console.log('TODOL state', state)
   return (
     <div className="todo-list">
       {props.toDo.map(item => (
@@ -21,5 +21,8 @@ const TodoList = props => {
 };
 
 export default TodoList;
+
+
+
 
 

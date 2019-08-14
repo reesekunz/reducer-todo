@@ -1,11 +1,10 @@
-//   - Your input field should take in user input, and allow a user to press `Enter` or click on the `Submit Button` to add a todo to your list.
-//   - Once a todo is submitted, the Todo List should re-render and show the added todo.
+// Add Task 
 
 import React, { useState, useReducer} from "react";
 import { initialState, toDoReducer } from "../reducers/reducer";
 
-const TodoForm = () => {
-  const [newItem, setNewItem] = useState();
+const TodoForm = props => {
+  const [newItem, setNewItem] = useState("");
 // useReducer - takes in a reducer and an initial stateState object
 // returns - a state object and the dispatch function
 
@@ -19,8 +18,9 @@ const handleChanges = event => {
 const submitItem = event => {
   // need prevent default on all form submissions and button clicks
 event.preventDefault ();
-// get text from input and use it to update state 
-setNewItem(state.item);
+
+//props.addTodo(newItem);
+
 // clear form on submission 
 setNewItem({ item: ""}) 
 }
