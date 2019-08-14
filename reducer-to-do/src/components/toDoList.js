@@ -1,28 +1,44 @@
-// Clear Completed 
-
-import React, { useReducer } from "react";
+import React, { useState, useReducer } from "react";
 import { initialState, toDoReducer } from "../reducers/reducer";
 
-import Item from "./Item";
+import TodoForm from "./TodoForm";
 
+const TodoList = () => {
+  const [state, dispatch] = useReducer(toDoReducer, initialState);
+  const [input, setInput] = useState("");
 
-const TodoList = props => {
-  const [state, dispatch] = useReducer(toDoReducer, initialState)
-  console.log('TODOL state', state)
+  const handleInput = event => setInput(event.target.value);
+
+  const addTodo = event => {
+    event.preventDefault();
+    dispatch({ type: "ADD_TASK", payload: input });
+    setInput("");
+  };
+  console.log("TodoList state =", state);
   return (
     <div className="todo-list">
-      {props.toDo.map(item => (
-        <Item key={item.id} item={item} toggleItem={props.toggleItem} />
-      ))}
-      <button onClick={() => dispatch({ type: "TOGGLE_COMPLETED", payload: props.clearCompleted })}>CLEAR COMPLETED</button>
+      <form onSubmit={addTodo}>
+        <input onChange={handleInput} value={input} type="text" />
+        <button>Add Task </button>
+      </form>
+      <div>
+        {state.todos.map(todo => (
+          <TodoForm
+            toggle={() =>
+              dispatch({ type: "TOGGLE_COMPLETED", payload: todo.id })
+            }
+            delete={() => dispatch({ type: "DELETE_TASK", payload: todo.id })}
+            key={todo.id}
+            todo={todo}
+          />
+        ))}
+      </div>
 
+      <button className="clear-btn" onClick={() => dispatch({ type: "CLEAR_COMPLETED" })}>
+        Clear Completed
+      </button>
     </div>
   );
 };
 
 export default TodoList;
-
-
-
-
-
